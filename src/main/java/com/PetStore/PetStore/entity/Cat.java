@@ -29,8 +29,8 @@ public class Cat extends Animal {
     public String toString() {
         return "Cat{" +
                 "id=" + getId() +
-                ", naissance='" + getBirth() + '\'' +
-                ", couleur=" + getCouleur() +
+                ", birth='" + getBirth() + '\'' +
+                ", color=" + getCouleur() +
                 ", chipId='" + getChipId() + '\'' +
                 '}';
     }

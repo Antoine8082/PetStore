@@ -25,8 +25,8 @@ public class Fish extends Animal {
     public String toString() {
         return "Fish{" +
                 "id=" + getId() +
-                ", naissance='" + getBirth() + '\'' +
-                ", couleur=" + getCouleur() +
+                ", birth='" + getBirth() + '\'' +
+                ", color=" + getCouleur() +
                 ", environnement='" + getLivingEnv() + '\'' +
                 '}';
     }
