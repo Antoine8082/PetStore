@@ -21,7 +21,7 @@ public class PetStoreService {
 
         // Création d'un PetStore
         PetStore petStore = new PetStore();
-        petStore.setName("Animalerie_1");
+        petStore.setName("Animalerie_Doe");
         petStore.setManagerName("John Doe");
 
         // Création d'une adresse
@@ -146,13 +146,10 @@ public class PetStoreService {
         // Récupération des entités depuis la base de données
         // Récupération des animaux d'un PetStore donné
         Query query = entityManager.createQuery("SELECT a FROM Animal a WHERE a.petStore.name = :name");
-        query.setParameter("name", "Animalerie_1");
+        query.setParameter("name", "Animalerie_Doe");
         List<Animal> animals = query.getResultList();
         for (Animal animal : animals) {
             System.out.println(animal);
         }
-        // Fermeture de l'EntityManager et l'EntityManagerFactory
-//        entityManager.close();
-//        entityManagerFactory.close();
     }
 }
