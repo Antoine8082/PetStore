@@ -1,6 +1,8 @@
 package com.PetStore.PetStore.service;
 
 import com.PetStore.PetStore.entity.*;
+import com.PetStore.PetStore.repository.AssociationRepo;
+import com.PetStore.PetStore.repository.AssociationRepoImpl;
 import com.PetStore.PetStore.repository.PersistanceRepo;
 import com.PetStore.PetStore.repository.PersistanceRepoImpl;
 import jakarta.persistence.*;
@@ -23,6 +25,7 @@ public class PetStoreService {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         PersistanceRepo persistanceRepo = new PersistanceRepoImpl(entityManager);
+        AssociationRepo associationRepo = new AssociationRepoImpl(entityManager);
 
         // Créer et persister des entités en base de données
         EntityTransaction transaction = entityManager.getTransaction();
@@ -41,8 +44,9 @@ public class PetStoreService {
         address.setCity("Nantes");
 
         // Association entre le PetStore et l'Adresse
-        petStore.setAddress(address);
-        address.setPetStore(petStore);
+        associationRepo.associatePetStoreWithAddress(petStore, address);
+//        petStore.setAddress(address);
+//        address.setPetStore(petStore);
 
         // Création de trois Produits
         Product product1 = new Product();
@@ -64,14 +68,17 @@ public class PetStoreService {
         product3.setPrice(3.99);
 
         // Association entre le PetStore et les Produits
-        petStore.getProducts().add(product1);
-        product1.getPetStores().add(petStore);
-
-        petStore.getProducts().add(product2);
-        product2.getPetStores().add(petStore);
-
-        petStore.getProducts().add(product3);
-        product3.getPetStores().add(petStore);
+        associationRepo.associatePetStoreWithProduct(petStore, product1);
+        associationRepo.associatePetStoreWithProduct(petStore, product2);
+        associationRepo.associatePetStoreWithProduct(petStore, product3);
+//        petStore.getProducts().add(product1);
+//        product1.getPetStores().add(petStore);
+//
+//        petStore.getProducts().add(product2);
+//        product2.getPetStores().add(petStore);
+//
+//        petStore.getProducts().add(product3);
+//        product3.getPetStores().add(petStore);
 
         // Création de trois Chat
         Cat cat1 = new Cat();
@@ -93,17 +100,20 @@ public class PetStoreService {
         Date date3 = Date.valueOf(str3);
         cat3.setBirth(date3);
         cat3.setCouleur("roux");
-        cat3.setChipId("345678");
+        cat3.setChipId("345677");
 
         // Association entre le PetStore et les Chats
-        petStore.getAnimals().add(cat1);
-        cat1.setPetStore(petStore);
-
-        petStore.getAnimals().add(cat2);
-        cat2.setPetStore(petStore);
-
-        petStore.getAnimals().add(cat3);
-        cat3.setPetStore(petStore);
+        associationRepo.associatePetStoreWithAnimal(petStore, cat1);
+        associationRepo.associatePetStoreWithAnimal(petStore, cat2);
+        associationRepo.associatePetStoreWithAnimal(petStore, cat3);
+//        petStore.getAnimals().add(cat1);
+//        cat1.setPetStore(petStore);
+//
+//        petStore.getAnimals().add(cat2);
+//        cat2.setPetStore(petStore);
+//
+//        petStore.getAnimals().add(cat3);
+//        cat3.setPetStore(petStore);
 
         // Création de trois Poisons
         Fish fish1 = new Fish();
@@ -128,14 +138,18 @@ public class PetStoreService {
         fish3.setLivingEnv(FishLivEnv.FRESH_WATER);
 
         // Association entre le PetStore et les Poisons
-        petStore.getAnimals().add(fish1);
-        fish1.setPetStore(petStore);
+        associationRepo.associatePetStoreWithAnimal(petStore, fish1);
+        associationRepo.associatePetStoreWithAnimal(petStore, fish2);
+        associationRepo.associatePetStoreWithAnimal(petStore, fish3);
 
-        petStore.getAnimals().add(fish2);
-        fish2.setPetStore(petStore);
-
-        petStore.getAnimals().add(fish3);
-        fish3.setPetStore(petStore);
+//        petStore.getAnimals().add(fish1);
+//        fish1.setPetStore(petStore);
+//
+//        petStore.getAnimals().add(fish2);
+//        fish2.setPetStore(petStore);
+//
+//        petStore.getAnimals().add(fish3);
+//        fish3.setPetStore(petStore);
 
         // Persistance des entités
 
