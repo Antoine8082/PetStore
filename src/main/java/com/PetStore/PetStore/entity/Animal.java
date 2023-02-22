@@ -24,6 +24,8 @@ public class Animal {
     @JoinColumn(name = "petstore_id")
     private PetStore petStore;
 
+    public Animal() {
+    }
     public Long getId() {
         return id;
     }
@@ -55,4 +57,5 @@ public class Animal {
     public void setPetStore(PetStore petStore) {
         this.petStore = petStore;
     }
+
 }

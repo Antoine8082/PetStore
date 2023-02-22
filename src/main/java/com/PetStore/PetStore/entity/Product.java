@@ -29,6 +29,8 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private Set<PetStore> petStores = new HashSet<>();
 
+    public Product() {
+    }
     public Long getId() {
         return id;
     }

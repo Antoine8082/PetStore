@@ -26,6 +26,9 @@ public class Address {
     @JoinColumn(name = "petstore_id")
     private PetStore petStore;
 
+    public Address() {
+    }
+
     public Long getId() {
         return id;
     }

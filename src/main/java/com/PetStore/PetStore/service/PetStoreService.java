@@ -40,13 +40,13 @@ public class PetStoreService {
         product1.setCode("F-001");
         product1.setLabel("Nourriture pour chats");
         product1.setType(ProdType.FOOD);
-        product1.setPrice(5.99);
+        product1.setPrice(7.99);
 
         Product product2 = new Product();
         product2.setCode("C-002");
         product2.setLabel("Litière pour chats");
         product2.setType(ProdType.CLEANING);
-        product2.setPrice(7.99);
+        product2.setPrice(5.99);
 
         Product product3 = new Product();
         product3.setCode("A-003");

@@ -11,11 +11,23 @@ public class Fish extends Animal {
     @Column(name = "living_env")
     private FishLivEnv livingEnv;
 
+    public Fish() {
+    }
+
     public FishLivEnv getLivingEnv() {
         return livingEnv;
     }
 
     public void setLivingEnv(FishLivEnv livingEnv) {
         this.livingEnv = livingEnv;
+    }
+    @Override
+    public String toString() {
+        return "Fish{" +
+                "id=" + getId() +
+                ", naissance='" + getBirth() + '\'' +
+                ", couleur=" + getCouleur() +
+                ", environnement='" + getLivingEnv() + '\'' +
+                '}';
     }
 }

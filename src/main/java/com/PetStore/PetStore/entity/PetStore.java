@@ -32,6 +32,9 @@ public class PetStore {
     )
     private Set<Product> products = new HashSet<>();
 
+    public PetStore() {
+    }
+
     public Long getId() {
         return id;
     }
