@@ -7,8 +7,10 @@ import com.PetStore.PetStore.entity.Product;
 
 import jakarta.persistence.EntityManager;
 
+import java.util.List;
+
 public class AssociationRepoImpl implements AssociationRepo {
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public AssociationRepoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
@@ -24,17 +26,32 @@ public class AssociationRepoImpl implements AssociationRepo {
 
     @Override
     public void associatePetStoreWithProduct(PetStore petStore, Product product) {
-        petStore.getProducts().add(product);
-        product.getPetStores().add(petStore);
+
+    }
+
+    @Override
+    public void associatePetStoreWithProduct(PetStore petStore, List<Product> products) {
+        for (Product product : products) {
+            petStore.getProducts().add(product);
+            product.getPetStores().add(petStore);
+            entityManager.persist(product);
+        }
         entityManager.persist(petStore);
-        entityManager.persist(product);
     }
 
     @Override
     public void associatePetStoreWithAnimal(PetStore petStore, Animal animal) {
-        petStore.getAnimals().add(animal);
-        animal.setPetStore(petStore);
+
+    }
+
+
+    @Override
+    public void associatePetStoreWithAnimal(PetStore petStore, List<Animal> animals) {
+        for (Animal animal : animals) {
+            petStore.getAnimals().add(animal);
+            animal.setPetStore(petStore);
+            entityManager.persist(animal);
+        }
         entityManager.persist(petStore);
-        entityManager.persist(animal);
     }
 }
