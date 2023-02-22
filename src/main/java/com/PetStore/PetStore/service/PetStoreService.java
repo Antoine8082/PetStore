@@ -66,17 +66,23 @@ public class PetStoreService {
 
         // Création de trois Chat
         Cat cat1 = new Cat();
-        cat1.setBirth(new Date(2020, 12, 31));
+        String str1="2020-12-31";
+        Date date1=Date.valueOf(str1);
+        cat1.setBirth(date1);
         cat1.setCouleur("blanc");
         cat1.setChipId("123456");
 
         Cat cat2 = new Cat();
-        cat2.setBirth(new Date(2021,01, 06));
+        String str2="2021-10-17";
+        Date date2=Date.valueOf(str2);
+        cat2.setBirth(date2);
         cat2.setCouleur("noir");
         cat2.setChipId("789012");
 
         Cat cat3 = new Cat();
-        cat3.setBirth(new Date(2022, 02, 02));
+        String str3="2022-09-19";
+        Date date3=Date.valueOf(str3);
+        cat3.setBirth(date3);
         cat3.setCouleur("roux");
         cat3.setChipId("345678");
 
@@ -90,6 +96,38 @@ public class PetStoreService {
         petStore.getAnimals().add(cat3);
         cat3.setPetStore(petStore);
 
+        // Création de trois Poisons
+        Fish fish1 = new Fish();
+        String str4="2021-10-17";
+        Date date4=Date.valueOf(str4);
+        fish1.setBirth(date4);
+        fish1.setCouleur("vert");
+        fish1.setLivingEnv(FishLivEnv.FRESH_WATER);
+
+        Fish fish2 = new Fish();
+        String str5="2019-03-06";
+        Date date5=Date.valueOf(str5);
+        fish2.setBirth(date5);
+        fish2.setCouleur("orange");
+        fish2.setLivingEnv(FishLivEnv.SEA_WATER);
+
+        Fish fish3 = new Fish();
+        String str6="2023-02-11";
+        Date date6=Date.valueOf(str6);
+        fish3.setBirth(date6);
+        fish3.setCouleur("jaune");
+        fish3.setLivingEnv(FishLivEnv.FRESH_WATER);
+
+        // Association entre le PetStore et les Poisons
+        petStore.getAnimals().add(fish1);
+        fish1.setPetStore(petStore);
+
+        petStore.getAnimals().add(fish2);
+        fish2.setPetStore(petStore);
+
+        petStore.getAnimals().add(fish3);
+        fish3.setPetStore(petStore);
+
         // Persistance des entités
         entityManager.persist(petStore);
         entityManager.persist(address);
@@ -99,6 +137,9 @@ public class PetStoreService {
         entityManager.persist(cat1);
         entityManager.persist(cat2);
         entityManager.persist(cat3);
+        entityManager.persist(fish1);
+        entityManager.persist(fish2);
+        entityManager.persist(fish3);
 
         transaction.commit();
 

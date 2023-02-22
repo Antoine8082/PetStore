@@ -1,10 +1,10 @@
 package com.PetStore.PetStore.entity;
 
 public enum ProdType {
-    ;
-    public static ProdType FOOD;
 
-    public static ProdType ACCESSORY;
+    FOOD,
 
-    public static ProdType CLEANING;
+    ACCESSORY,
+
+    CLEANING
 }

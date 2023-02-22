@@ -20,4 +20,29 @@ public class Cat extends Animal {
     public void setChipId(String chipId) {
         this.chipId = chipId;
     }
+//    private String furColor;
+//
+//    public Cat(String name, int age, String furColor) {
+//        super(name, age);
+//        this.furColor = furColor;
+//    }
+//
+//    // ajout de la méthode toString()
+//    @Override
+//    public String toString() {
+//        return "Cat{" +
+//                "id=" + getId() +
+//                ", name='" + getName() + '\'' +
+//                ", age=" + getAge() +
+//                ", furColor='" + furColor + '\'' +
+//                '}';
+//    }
+//
+//    public String getFurColor() {
+//        return furColor;
+//    }
+//
+//    public void setFurColor(String furColor) {
+//        this.furColor = furColor;
+//    }
 }
