@@ -4,12 +4,13 @@ import com.PetStore.PetStore.entity.*;
 import jakarta.persistence.*;
 
 import java.sql.Date;
+
 import java.util.List;
 
 public class PetStoreService {
     public static void main(String[] args) {
         // Instancier l'EntityManagerFactory
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("petstore");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("PetStore");
 
         // Instancier un EntityManager
         EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -34,32 +35,70 @@ public class PetStoreService {
         petStore.setAddress(address);
         address.setPetStore(petStore);
 
-        // Création d'un Produit
-        Product product = new Product();
-        product.setCode("P-001");
-        product.setLabel("Nourriture pour chats");
-        product.setType(ProdType.FOOD);
-        product.setPrice(5.99);
+        // Création de trois Produits
+        Product product1 = new Product();
+        product1.setCode("F-001");
+        product1.setLabel("Nourriture pour chats");
+        product1.setType(ProdType.FOOD);
+        product1.setPrice(5.99);
 
-        // Association entre le PetStore et le Produit
-        petStore.getProducts().add(product);
-        product.getPetStores().add(petStore);
+        Product product2 = new Product();
+        product2.setCode("C-002");
+        product2.setLabel("Litière pour chats");
+        product2.setType(ProdType.CLEANING);
+        product2.setPrice(7.99);
 
-        // Création d'un Chat
-        Cat cat = new Cat();
-        cat.setBirth(new Date());
-        cat.setCouleur("blanc");
-        cat.setChipId("123456");
+        Product product3 = new Product();
+        product3.setCode("A-003");
+        product3.setLabel("Jouet pour chats");
+        product3.setType(ProdType.ACCESSORY);
+        product3.setPrice(3.99);
 
-        // Association entre le PetStore et le Chat
-        petStore.getAnimals().add(cat);
-        cat.setPetStore(petStore);
+        // Association entre le PetStore et les Produits
+        petStore.getProducts().add(product1);
+        product1.getPetStores().add(petStore);
+
+        petStore.getProducts().add(product2);
+        product2.getPetStores().add(petStore);
+
+        petStore.getProducts().add(product3);
+        product3.getPetStores().add(petStore);
+
+        // Création de trois Chat
+        Cat cat1 = new Cat();
+        cat1.setBirth(new Date(2020, 12, 31));
+        cat1.setCouleur("blanc");
+        cat1.setChipId("123456");
+
+        Cat cat2 = new Cat();
+        cat2.setBirth(new Date(2021,01, 06));
+        cat2.setCouleur("noir");
+        cat2.setChipId("789012");
+
+        Cat cat3 = new Cat();
+        cat3.setBirth(new Date(2022, 02, 02));
+        cat3.setCouleur("roux");
+        cat3.setChipId("345678");
+
+        // Association entre le PetStore et les Chats
+        petStore.getAnimals().add(cat1);
+        cat1.setPetStore(petStore);
+
+        petStore.getAnimals().add(cat2);
+        cat2.setPetStore(petStore);
+
+        petStore.getAnimals().add(cat3);
+        cat3.setPetStore(petStore);
 
         // Persistance des entités
         entityManager.persist(petStore);
         entityManager.persist(address);
-        entityManager.persist(product);
-        entityManager.persist(cat);
+        entityManager.persist(product1);
+        entityManager.persist(product2);
+        entityManager.persist(product3);
+        entityManager.persist(cat1);
+        entityManager.persist(cat2);
+        entityManager.persist(cat3);
 
         transaction.commit();
 
@@ -71,8 +110,8 @@ public class PetStoreService {
         for (Animal animal : animals) {
             System.out.println(animal);
         }
-        // Fermer l'EntityManager et l'EntityManagerFactory
-        entityManager.close();
-        entityManagerFactory.close();
+        // Fermeture de l'EntityManager et l'EntityManagerFactory
+//        entityManager.close();
+//        entityManagerFactory.close();
     }
 }
